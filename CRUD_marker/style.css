@@ -1,0 +1,159 @@
+/* style.css */
+
+/* Mengatur body */
+body {
+  background-color: #f8f9fa; /* Warna latar belakang */
+  font-family: "Arial", sans-serif; /* Mengatur font */
+  margin: 0;
+}
+
+/* Mengatur jumbotron */
+.jumbotron {
+  background-color: #1fa108; /* Warna latar belakang jumbotron */
+  color: black; /* Warna teks menjadi hitam */
+  height: 100%;
+  border-radius: 0; /* Sudut jumbotron membulat */
+  padding: 2em; /* Padding untuk jumbotron */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk jumbotron */
+}
+
+/* Mengatur tabel */
+.table {
+  background-color: #ffffff; /* Warna latar belakang tabel */
+  border-radius: 10px; /* Sudut membulat untuk tabel */
+  overflow: hidden; /* Pastikan sudut membulat pada tabel */
+}
+
+.table th {
+  background-color: #007bff; /* Warna latar belakang header tabel */
+  color: white; /* Warna teks header tabel */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Zebra striping untuk baris */
+}
+
+.table-striped tbody tr:hover {
+  background-color: #e2e6ea; /* Sorot pada hover */
+}
+
+/* Mengatur form */
+.form-group {
+  margin-bottom: 5px; /* Jarak antar form */
+  background-color: #28a745; /* Warna latar belakang form */
+}
+
+/* Mengatur tombol */
+.btn {
+  border-radius: 5px; /* Membuat sudut tombol membulat */
+  padding: 10px 20px; /* Padding tombol */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Warna tombol primer */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Warna lebih gelap pada hover */
+}
+
+.navbar {
+  background-color: #007bff; /* Warna latar belakang navbar */
+  color: white;
+  display: flex;
+  justify-content: center; /* Center the navbar content */
+}
+
+.navbar-brand {
+  text-align: center; /* Center align the text */
+  width: 100%; /* Make it take full width */
+  font-weight: bold; /* Buat teks navbar menjadi tebal */
+  font-size: 1.5em; /* Atur ukuran font sesuai keinginan */
+}
+
+/* Mengatur bingkai peta */
+.map-frame {
+  height: 400px; /* Tinggi bingkai peta */
+  border: 2px solid #007bff; /* Border warna biru */
+  border-radius: 10px; /* Sudut membulat untuk bingkai */
+  margin-top: 1em; /* Jarak atas untuk bingkai */
+}
+
+/* Mengatur tampilan elemen h1 */
+h1 {
+  font-size: 24px; /* Ukuran font untuk h1 */
+  margin-bottom: 20px; /* Jarak bawah h1 */
+}
+
+/* Mengatur tampilan input dan textarea */
+input[type="text"],
+input[type="file"],
+textarea,
+select {
+  border-radius: 5px; /* Sudut membulat */
+  border: 1px solid #ced4da; /* Batas border */
+  padding: 10px; /* Padding */
+  transition: border-color 0.3s; /* Animasi border */
+}
+
+/* Mengatur border saat focus */
+input[type="text"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #007bff; /* Warna border saat focus */
+  outline: none; /* Menghilangkan outline default */
+}
+
+/* Mengatur tampilan popup di peta */
+.leaflet-popup {
+  max-width: 200px; /* Mengatur lebar maksimum popup */
+}
+
+.leaflet-popup img {
+  width: 100%; /* Gambar memenuhi lebar popup */
+  height: auto; /* Tinggi otomatis */
+}
+
+#mapid {
+  height: 100%; /* Mengatur tinggi peta agar sesuai dengan tinggi bingkai */
+  width: 100%; /* Lebar peta disesuaikan */
+}
+
+/* Styling untuk input pencarian */
+.search-container {
+  position: absolute;
+  top: 10px; /* Posisi dari atas */
+  right: 10px; /* Pindah dari kiri ke kanan */
+  z-index: 1000; /* Pastikan tetap di atas peta */
+  background-color: white; /* Latar belakang putih untuk input pencarian */
+  border-radius: 5px; /* Sudut yang membulat */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Bayangan untuk visibilitas yang lebih baik */
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.search-container input {
+  flex: 1; /* Mengisi ruang yang tersedia */
+  margin-right: 0.5em; /* Jarak kanan untuk input */
+}
+
+/* Custom alert styles */
+.custom-alert {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #e7f1ff; /* Warna biru muda untuk alert */
+  border-left: 5px solid #007bff; /* Garis biru di kiri */
+  border-radius: 5px; /* Sudut yang membulat */
+}
+
+/* Modal styles */
+.modal-header {
+  background-color: #007bff; /* Warna latar belakang modal header */
+  color: white; /* Warna teks modal header */
+}
+
+.modal-body {
+  padding: 2em; /* Padding untuk isi modal */
+}
