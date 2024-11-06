@@ -2,15 +2,15 @@
 
 /* Mengatur body */
 body {
-  background-color: #f8f9fa; /* Warna latar belakang */
+  background-color: #f0f4e5; /* Warna latar belakang lebih cerah */
   font-family: "Arial", sans-serif; /* Mengatur font */
   margin: 0;
 }
 
 /* Mengatur jumbotron */
 .jumbotron {
-  background-color: #1fa108; /* Warna latar belakang jumbotron */
-  color: black; /* Warna teks menjadi hitam */
+  background-color: #4CAF50; /* Hijau untuk jumbotron */
+  color: white; /* Warna teks menjadi putih untuk kontras yang baik */
   height: 100%;
   border-radius: 0; /* Sudut jumbotron membulat */
   padding: 2em; /* Padding untuk jumbotron */
@@ -25,8 +25,8 @@ body {
 }
 
 .table th {
-  background-color: #007bff; /* Warna latar belakang header tabel */
-  color: white; /* Warna teks header tabel */
+  background-color: #f7f6f3; /* Kuning untuk header tabel */
+  color: black; /* Warna teks header tabel */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -34,13 +34,13 @@ body {
 }
 
 .table-striped tbody tr:hover {
-  background-color: #e2e6ea; /* Sorot pada hover */
+  background-color: #FF5722; /* Merah pada hover */
 }
 
 /* Mengatur form */
 .form-group {
   margin-bottom: 5px; /* Jarak antar form */
-  background-color: #28a745; /* Warna latar belakang form */
+  background-color: #0aad2b; /* Kuning untuk form */
 }
 
 /* Mengatur tombol */
@@ -50,15 +50,25 @@ body {
 }
 
 .btn-primary {
-  background-color: #007bff; /* Warna tombol primer */
+  background-color: #4CAF50; /* Hijau untuk tombol primer */
+  color: white; /* Teks tombol berwarna putih */
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Warna lebih gelap pada hover */
+  background-color: #388E3C; /* Warna lebih gelap pada hover */
+}
+
+.btn-danger {
+  background-color: #FF5722; /* Merah untuk tombol berbahaya */
+  color: white; /* Teks tombol berwarna putih */
+}
+
+.btn-danger:hover {
+  background-color: #D32F2F; /* Warna lebih gelap pada hover */
 }
 
 .navbar {
-  background-color: #007bff; /* Warna latar belakang navbar */
+  background-color: #FF9800; /* Kuning untuk navbar */
   color: white;
   display: flex;
   justify-content: center; /* Center the navbar content */
@@ -74,7 +84,7 @@ body {
 /* Mengatur bingkai peta */
 .map-frame {
   height: 400px; /* Tinggi bingkai peta */
-  border: 2px solid #007bff; /* Border warna biru */
+  border: 2px solid #4CAF50; /* Border hijau */
   border-radius: 10px; /* Sudut membulat untuk bingkai */
   margin-top: 1em; /* Jarak atas untuk bingkai */
 }
@@ -83,6 +93,7 @@ body {
 h1 {
   font-size: 24px; /* Ukuran font untuk h1 */
   margin-bottom: 20px; /* Jarak bawah h1 */
+  color: #4CAF50; /* Hijau untuk h1 */
 }
 
 /* Mengatur tampilan input dan textarea */
@@ -101,7 +112,7 @@ input[type="text"]:focus,
 input[type="file"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #007bff; /* Warna border saat focus */
+  border-color: #FFC107; /* Kuning saat focus */
   outline: none; /* Menghilangkan outline default */
 }
 
@@ -144,13 +155,13 @@ select:focus {
   margin: 1em 0;
   padding: 1em;
   background-color: #e7f1ff; /* Warna biru muda untuk alert */
-  border-left: 5px solid #007bff; /* Garis biru di kiri */
+  border-left: 5px solid #4CAF50; /* Garis hijau di kiri */
   border-radius: 5px; /* Sudut yang membulat */
 }
 
 /* Modal styles */
 .modal-header {
-  background-color: #007bff; /* Warna latar belakang modal header */
+  background-color: #4CAF50; /* Hijau untuk modal header */
   color: white; /* Warna teks modal header */
 }
 

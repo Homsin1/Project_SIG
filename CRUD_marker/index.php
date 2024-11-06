@@ -39,6 +39,18 @@
             <input type="text" class="form-control" name="nama_tempat" required>
         </div>
         <div class="form-group">
+        <label for="kategori">Kategori Lokasi</label>
+        <select class="form-control" name="kategori" required>
+            <option value="">Pilih Kategori</option>
+            <option value="Restoran">Restoran</option>
+            <option value="Tempat Wisata">Tempat Wisata</option>
+            <option value="Toko">Toko</option>
+            <option value="Sekolah">Sekolah</option>
+            <option value="Rumah Sakit">Rumah Sakit</option>
+            <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+        </select>
+    </div>
+        <div class="form-group">
             <label for="keterangan">Keterangan</label>
             <textarea class="form-control" name="keterangan" required></textarea>
         </div>
@@ -52,6 +64,7 @@
 </div>
 
     </div>
+    
     <div class="col-8">
         <!-- Search Location Feature -->
         <div class="search-container mb-3">
@@ -62,6 +75,15 @@
         </div>
             <div id="mapid" class="map-frame"></div>
 
+            <div class="col-8">
+        <!-- Filter Category Buttons -->
+        <div class="mb-3">
+            <button class="btn btn-primary" onclick="filterCategory('Restoran')">Restoran</button>
+            <button class="btn btn-secondary" onclick="filterCategory('Tempat Wisata')">Tempat Wisata</button>
+            <button class="btn btn-success" onclick="filterCategory('Toko')">Toko</button>
+            <button class="btn btn-warning" onclick="filterCategory('Sekolah')">Sekolah</button>
+            <button class="btn btn-danger" onclick="filterCategory('Rumah Sakit')">Rumah Sakit</button>
+        </div>
     <div class="col-8">
         <div id="mapid" ></div>
 
@@ -117,6 +139,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama Tempat</th>
+                                    <th>Kategori</th>
                                     <th>Keterangan</th>
                                     <th>Foto</th>
                                     <th>Aksi</th>
@@ -127,6 +150,7 @@
                                     <tr>
                                         <td><?= $location['id'] ?></td>
                                         <td><?= htmlspecialchars($location['nama_tempat']) ?></td>
+                                        <td><?= htmlspecialchars($location['kategori']) ?></td>
                                         <td><?= htmlspecialchars($location['keterangan']) ?></td>
                                         <td><img src="uploads/<?= htmlspecialchars($location['foto']) ?>" style="width: 100px;"></td>
                                         <td>
@@ -143,9 +167,40 @@
         </div>
 
         <script>
-            var mymap = L.map('mapid').setView([-8.1667, 113.6925], 13);
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Map data &copy; OpenStreetMap', maxZoom: 20 }).addTo(mymap);
-            var geocoder = L.Control.Geocoder.nominatim();
+       var mymap = L.map('mapid').setView([-8.126034756129023, 113.62198509768088], 14);
+
+// Menambahkan tile layer untuk tampilan peta dasar
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    maxZoom: 20
+}).addTo(mymap);
+
+// Menambahkan layer batas wilayah (contoh menggunakan GeoJSON)
+var geojsonLayer = L.geoJson(null, {
+    style: {
+        color: "#FF0000",
+        weight: 2,
+        opacity: 0.6
+    }
+}).addTo(mymap);
+
+// Fetch data batas wilayah dalam format GeoJSON
+fetch('url_to_geojson_file.geojson')  // ganti dengan URL GeoJSON yang sesuai
+    .then(response => response.json())
+    .then(data => {
+        geojsonLayer.addData(data);
+        // Menggunakan fitBounds untuk memperbesar dan memusatkan peta sesuai batas wilayah
+        mymap.fitBounds(geojsonLayer.getBounds());
+    })
+    .catch(error => console.error('Error loading GeoJSON:', error));
+
+// Menambahkan layer untuk tampilan jalan yang lebih rinci (contoh menggunakan Mapbox Streets)
+L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=your_mapbox_access_token', {
+    attribution: 'Map data &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 20,
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(mymap);
 
             <?php foreach ($locations as $location): ?>
                 addMarker(<?= json_encode(explode(',', str_replace(['LatLng(', ')'], '', $location['lat_long']))) ?>, <?= $location['id'] ?>, <?= json_encode($location['nama_tempat']) ?>, <?= json_encode($location['keterangan']) ?>, 'uploads/<?= $location['foto'] ?>');
@@ -169,9 +224,10 @@
             }
             mymap.on('click', onMapClick);
 
-            function addMarker(coords, id, name, description, photoPath) {
+            function addMarker(coords, category, name, description, photoPath) {
                 var marker = L.marker([parseFloat(coords[0]), parseFloat(coords[1])]).addTo(mymap);
                 marker.bindPopup(
+                
             '<div style="text-align: center;">' +
             '<b style="display: block; margin-bottom: 5px; text-align: center;">' + name + '</b>' +
             '<img src="' + photoPath + '" alt="Foto" style="width: 100px; height: auto; margin: 5px 0;">' +
@@ -220,6 +276,19 @@
             });
         });
 
+        
+        function filterCategory(category) {
+        markers.forEach(function(marker) {
+            // If the marker's category matches the selected category, show it, otherwise hide it
+            if (category === 'all' || marker.category === category) {
+                if (!mymap.hasLayer(marker)) { // Only add if it's not already added
+                    marker.addTo(mymap);
+                }
+            } else {
+                mymap.removeLayer(marker);
+            }
+        });
+    }
         </script>
         
     </div>

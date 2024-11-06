@@ -23,9 +23,10 @@ if (isset($_POST['update'])) {
     $lat_long = mysqli_real_escape_string($connect, $_POST['latlong']);
     $nama_tempat = mysqli_real_escape_string($connect, $_POST['nama_tempat']);
     $keterangan = mysqli_real_escape_string($connect, $_POST['keterangan']);
+    $kategori = mysqli_real_escape_string($connect, $_POST['kategori']); 
 
     // Mengupdate data lokasi
-    $update = mysqli_query($connect, "UPDATE lokasi SET lat_long='$lat_long', nama_tempat='$nama_tempat', keterangan='$keterangan' WHERE id='$id'");
+    $update = mysqli_query($connect, "UPDATE lokasi SET lat_long='$lat_long', nama_tempat='$nama_tempat', keterangan='$keterangan', kategori='$kategori' WHERE id='$id'");
 
     if ($update) {
         header("Location: index.php");
@@ -115,6 +116,18 @@ mysqli_close($connect);
             <input type="text" name="nama_tempat" value="<?php echo isset($data['nama_tempat']) ? $data['nama_tempat'] : ''; ?>" required>
         </div>
         <div>
+        <div class="form-group">
+        <label for="kategori">Kategori Lokasi</label>
+        <select class="form-control" name="kategori" required>
+            <option value="">Pilih Kategori</option>
+            <option value="Restoran">Restoran</option>
+            <option value="Tempat Wisata">Tempat Wisata</option>
+            <option value="Toko">Toko</option>
+            <option value="Sekolah">Sekolah</option>
+            <option value="Rumah Sakit">Rumah Sakit</option>
+            <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+        </select>
+    </div>
             <label>Keterangan</label>
             <textarea name="keterangan" required><?php echo isset($data['keterangan']) ? $data['keterangan'] : ''; ?></textarea>
         </div>
