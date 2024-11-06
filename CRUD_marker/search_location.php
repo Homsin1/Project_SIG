@@ -27,4 +27,4 @@ if (empty($output)) {
 
 echo $output; // Pastikan output bisa dikirim ke AJAX
 mysqli_close($mysqli);
-?>
+

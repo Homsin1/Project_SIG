@@ -23,4 +23,3 @@ if (isset($_POST['id'])) {
 }
 
 $mysqli->close();
-?>

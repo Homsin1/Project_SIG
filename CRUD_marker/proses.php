@@ -29,4 +29,4 @@ if ($mysqli->query($query) === TRUE) {
 
 $mysqli->close();
 header("Location: index.php"); // Redirect kembali ke halaman utama setelah berhasil
-?>
+
