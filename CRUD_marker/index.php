@@ -108,6 +108,16 @@
                     maxZoom: 20
                 }).addTo(mymap);
 
+                var popup = L.popup();
+
+                function onMapClick(e) {
+                    popup.setLatLng(e.latlng)
+                        .setContent("Koordinat: " + e.latlng.toString())
+                        .openOn(mymap);
+                    document.getElementById('latlong').value = e.latlng.lat + ',' + e.latlng.lng;
+                }
+
+                mymap.on('click', onMapClick);
                 // Array untuk menyimpan marker dengan kategori
                 var markers = [];
 
@@ -156,7 +166,7 @@
                 // Menambahkan marker baru ke peta
                 function addMarker(latlng, name, category, description, photoPath) {
                     var marker = L.marker(latlng).addTo(mymap);
-                    marker.bindPopup('<b>' + name + '</b><br>' + description + '<br><img src="' + photoPath + '" style="width: 100px; height: auto;">');
+                    marker.bindPopup('<b>' + name + '</b><br>' + description + '<br><img src="' + photoPath + '" style="width: 100px; height: auto;">' );
                 }
 
                 function deleteLocation(id, name) {
